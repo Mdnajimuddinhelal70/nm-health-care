@@ -4,12 +4,13 @@ import express from "express";
 import type { Application, Request, Response } from "express";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler.js";
 import notFound from "./app/middlewares/notFound.js";
+import router from "./app/routes/index.js";
 import config from "./config/index.js";
 
 const app: Application = express();
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5000",
     credentials: true,
   })
 );
@@ -17,7 +18,7 @@ app.use(
 //parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use("/api/v1", router);
 app.get("/", (req: Request, res: Response) => {
   res.send({
     message: "Server is running..",
