@@ -9,6 +9,12 @@ import { UserValidation } from "./user.validation.js";
 
 const router = express.Router();
 
+router.get(
+  "/",
+  // auth(UserRole.ADMIN),
+  UserController.getAllFromDB
+);
+
 router.post(
   "/create-patient",
   fileUploader.upload.single("file"),
