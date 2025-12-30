@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 
+import cookieParser from "cookie-parser";
 import type { Application, Request, Response } from "express";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler.js";
 import notFound from "./app/middlewares/notFound.js";
@@ -19,6 +20,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1", router);
+app.use(cookieParser());
 app.get("/", (req: Request, res: Response) => {
   res.send({
     message: "Server is running..",
