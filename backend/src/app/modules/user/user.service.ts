@@ -1,10 +1,8 @@
 import bcrypt from "bcryptjs";
 import type { Request } from "express";
-import {
-  Prisma,
-  UserRole,
-  type Admin,
-} from "../../../../generated/prisma/client.js";
+
+import type { Prisma } from "generated/prisma/client.js";
+import { UserRole, type Admin } from "prisma/src/generated/prisma/client.js";
 import { fileUploader } from "../../helper/fileUploader.js";
 import {
   paginationHelper,

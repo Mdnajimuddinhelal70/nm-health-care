@@ -2,15 +2,21 @@ enum UserRole {
     PATIENT
     DOCTOR
     ADMIN
+
+    @@schema("user_role")
 }
 
 enum UserStatus {
     ACTIVE
     INACTIVE
     DELETED
+
+    @@schema("user_status")
 }
 
 enum Gender {
     MALE
     FEMALE
+
+    @@schema("gender")
 }

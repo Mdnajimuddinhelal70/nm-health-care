@@ -1,5 +1,6 @@
-import bcrypt from "bcryptjs";
-import { UserStatus } from "../../../../generated/prisma/enums.js";
+import bcryptjs from "bcryptjs";
+
+import { UserStatus } from "generated/prisma/enums.js";
 import { jwtHelper } from "../../helper/jwtHelper.js";
 import { prisma } from "../../shared/prisma.js";
 
@@ -11,7 +12,7 @@ const login = async (payload: { email: string; password: string }) => {
     },
   });
 
-  const isCorrectPassword = await bcrypt.compare(
+  const isCorrectPassword = await bcryptjs.compare(
     payload.password,
     user.password
   );

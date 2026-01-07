@@ -12,6 +12,7 @@ model User {
     patient            Patient?
 
     @@map("users")
+    @@schema("users")
 }
 
 model Admin {
@@ -27,6 +28,7 @@ model Admin {
     user User @relation(fields: [email], references: [email])
 
     @@map("admins")
+    @@schema("admins")
 }
 
 model Doctor {
@@ -49,7 +51,10 @@ model Doctor {
 
     user User @relation(fields: [email], references: [email])
 
+    doctorSchedules DoctorSchedules[]
+
     @@map("doctors")
+    @@schema("doctors")
 }
 
 model Patient {
@@ -65,4 +70,5 @@ model Patient {
     user User @relation(fields: [email], references: [email])
 
     @@map("patients")
+    @@schema("patients")
 }
