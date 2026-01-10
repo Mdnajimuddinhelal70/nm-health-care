@@ -19,8 +19,8 @@ app.use(
 //parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/v1", router);
 app.use(cookieParser());
+app.use("/api/v1", router);
 app.get("/", (req: Request, res: Response) => {
   res.send({
     message: "Server is running..",

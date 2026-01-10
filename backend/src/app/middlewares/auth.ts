@@ -1,4 +1,4 @@
-import { type NextFunction, type Request, type Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { jwtHelper } from "../helper/jwtHelper.js";
 
 const auth = (...roles: string[]) => {
@@ -8,7 +8,7 @@ const auth = (...roles: string[]) => {
     next: NextFunction
   ) => {
     try {
-      const token = req.cookies.get("accessToken");
+      const token = req.cookies?.accessToken;
 
       if (!token) {
         throw new Error("You are not authorized!");

@@ -3,6 +3,8 @@ import express, {
   type Request,
   type Response,
 } from "express";
+import { UserRole } from "generated/prisma/enums.js";
+import auth from "src/app/middlewares/auth.js";
 import { fileUploader } from "../../helper/fileUploader.js";
 import { UserController } from "./user.controller.js";
 import { UserValidation } from "./user.validation.js";
@@ -49,7 +51,7 @@ router.post(
 );
 router.post(
   "/create-doctor",
-  // auth(UserRole.ADMIN),
+  auth(UserRole.ADMIN, UserRole.DOCTOR),
   fileUploader.upload.single("file"),
   (req: Request, res: Response, next: NextFunction) => {
     console.log(JSON.parse(req.body.data));

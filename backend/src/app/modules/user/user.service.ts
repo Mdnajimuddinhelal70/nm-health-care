@@ -65,7 +65,6 @@ const createAdmin = async (req: Request): Promise<Admin> => {
 
   return result;
 };
-
 const createDoctor = async (req: Request) => {
   const file = req.file;
 
