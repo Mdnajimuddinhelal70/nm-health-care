@@ -1,10 +1,9 @@
 generator client {
-  provider        = "prisma-client"
-  output          = "../../generated/prisma"
-  previewFeatures = ["multiSchema"]
+  provider = "prisma-client"
+  output   = "../../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  schemas  = ["users", "admins", "doctors", "patients", "schedules", "doctor_schedules", "user_role", "user_status", "gender"]
+  schemas  = ["users", "admins", "doctors", "patients", "schedules", "doctor_schedules", "user_role", "user_status", "gender", "doctor_specialties", "specialties"]
 }
