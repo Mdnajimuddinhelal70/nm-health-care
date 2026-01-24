@@ -20,3 +20,39 @@ enum Gender {
 
     @@schema("gender")
 }
+
+enum AppointmentStatus {
+    SCHEDULED
+    INPROGRESS
+    COMPLETED
+    CANCEL
+
+    @@schema("appointmentStatus")
+}
+
+enum PaymentStatus {
+    PAID
+    UNPAID
+
+    @@schema("paymentStatus")
+}
+
+enum BloodGroup {
+    A_POSITIVE
+    B_POSITIVE
+    O_POSITIVE
+    AB_POSITIVE
+    A_NEGATIVE
+    B_NEGATIVE
+    O_NEGATIVE
+    AB_NEGATIVE
+
+    @@schema("bloodGroup")
+}
+
+enum MaritalStatus {
+    MARRIED
+    UNMARRIED
+
+    @@schema("maritalStatus")
+}
