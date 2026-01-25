@@ -1,4 +1,4 @@
-import { PaymentStatus } from "generated/prisma/enums.js";
+import { PaymentStatus } from "@prisma/index.js";
 import { prisma } from "src/app/shared/prisma.js";
 import Stripe from "stripe";
 

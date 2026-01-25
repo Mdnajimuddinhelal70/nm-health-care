@@ -1,5 +1,5 @@
+import type { Prisma } from "@prisma/index.js";
 import { addHours, addMinutes, format } from "date-fns";
-import type { Prisma } from "generated/prisma/client.js";
 import {
   paginationHelper,
   type IOptions,
@@ -23,13 +23,13 @@ const insertIntoDB = async (payload: any) => {
     // start datetime
     let startDateTime = addMinutes(
       addHours(baseDate, Number(startTime.split(":")[0])),
-      Number(startTime.split(":")[1])
+      Number(startTime.split(":")[1]),
     );
 
     // end datetime
     const endDateTime = addMinutes(
       addHours(baseDate, Number(endTime.split(":")[0])),
-      Number(endTime.split(":")[1])
+      Number(endTime.split(":")[1]),
     );
 
     // create 30 min slots
@@ -71,7 +71,7 @@ const insertIntoDB = async (payload: any) => {
 const schedulesForDoctor = async (
   user: IJWTPayload,
   filters: any,
-  options: IOptions
+  options: IOptions,
 ) => {
   const { page, skip, limit, sortBy, sortOrder } =
     paginationHelper.calculatePagination(options);
@@ -113,7 +113,7 @@ const schedulesForDoctor = async (
     },
   });
   const doctorScheduleIds = doctorSchedules.map(
-    (schedule) => schedule.scheduleId
+    (schedule) => schedule.scheduleId,
   );
 
   const result = await prisma.schedule.findMany({

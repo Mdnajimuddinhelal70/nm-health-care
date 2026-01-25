@@ -1,5 +1,5 @@
+import { UserRole } from "@prisma/index.js";
 import express from "express";
-import { UserRole } from "generated/prisma/enums.js";
 import auth from "src/app/middlewares/auth.js";
 import { AppointmentController } from "./appointment.controller.js";
 

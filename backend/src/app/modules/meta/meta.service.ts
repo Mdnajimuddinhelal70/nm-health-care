@@ -1,4 +1,4 @@
-import { PaymentStatus, UserRole } from "generated/prisma/enums.js";
+import { PaymentStatus, UserRole } from "@prisma/index.js";
 import httpStatus from "http-status-codes";
 import ApiError from "src/app/errors/ApiError.js";
 import { prisma } from "src/app/shared/prisma.js";

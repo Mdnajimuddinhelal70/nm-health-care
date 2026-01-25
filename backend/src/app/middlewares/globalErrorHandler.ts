@@ -1,12 +1,12 @@
+import { Prisma } from "@prisma/index.js";
 import type { NextFunction, Request, Response } from "express";
-import { Prisma } from "generated/prisma/client.js";
 import httpStatus from "http-status-codes";
 
 const globalErrorHandler = (
   err: any,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   console.log(err);
   let statusCode: number = err.statusCode || httpStatus.INTERNAL_SERVER_ERROR;
@@ -16,32 +16,32 @@ const globalErrorHandler = (
 
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     if (err.code === "P2002") {
-      (message = "Duplicate key error"),
+      ((message = "Duplicate key error"),
         (error = err.meta),
-        (statusCode = httpStatus.CONFLICT);
+        (statusCode = httpStatus.CONFLICT));
     }
     if (err.code === "P1000") {
-      (message = "Authentication failed against database server"),
+      ((message = "Authentication failed against database server"),
         (error = err.meta),
-        (statusCode = httpStatus.BAD_GATEWAY);
+        (statusCode = httpStatus.BAD_GATEWAY));
     }
     if (err.code === "P2003") {
-      (message = "Foreign key constraint failed"),
+      ((message = "Foreign key constraint failed"),
         (error = err.meta),
-        (statusCode = httpStatus.BAD_REQUEST);
+        (statusCode = httpStatus.BAD_REQUEST));
     }
   } else if (err instanceof Prisma.PrismaClientValidationError) {
-    (message = "Validation Error"),
+    ((message = "Validation Error"),
       (error = err.message),
-      (statusCode = httpStatus.BAD_REQUEST);
+      (statusCode = httpStatus.BAD_REQUEST));
   } else if (err instanceof Prisma.PrismaClientUnknownRequestError) {
-    (message = "Unknown Prisma error occured!"),
+    ((message = "Unknown Prisma error occured!"),
       (error = err.message),
-      (statusCode = httpStatus.BAD_REQUEST);
+      (statusCode = httpStatus.BAD_REQUEST));
   } else if (err instanceof Prisma.PrismaClientInitializationError) {
-    (message = "Prisma client failed to initialize!"),
+    ((message = "Prisma client failed to initialize!"),
       (error = err.message),
-      (statusCode = httpStatus.BAD_REQUEST);
+      (statusCode = httpStatus.BAD_REQUEST));
   }
 
   res.status(statusCode).json({

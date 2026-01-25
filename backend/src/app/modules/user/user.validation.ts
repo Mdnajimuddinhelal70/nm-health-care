@@ -1,5 +1,5 @@
+import { Gender } from "@prisma/index.js";
 import z from "zod";
-import { Gender } from "../../../../generated/prisma/enums.js";
 
 const createPatientValidationSchema = z.object({
   password: z.string(),

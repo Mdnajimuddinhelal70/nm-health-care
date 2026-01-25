@@ -1,9 +1,9 @@
+import { UserRole } from "@prisma/index.js";
 import express, {
   type NextFunction,
   type Request,
   type Response,
 } from "express";
-import { UserRole } from "generated/prisma/enums.js";
 import auth from "src/app/middlewares/auth.js";
 import { fileUploader } from "../../helper/fileUploader.js";
 import { UserController } from "./user.controller.js";
@@ -14,7 +14,7 @@ const router = express.Router();
 router.get(
   "/",
   // auth(UserRole.ADMIN),
-  UserController.getAllFromDB
+  UserController.getAllFromDB,
 );
 
 router.post(
@@ -25,7 +25,7 @@ router.post(
     console.log("FILE:", req.file);
     console.log("BODY (raw):", req.body);
     const parsedData = UserValidation.createPatientValidationSchema.parse(
-      JSON.parse(req.body.data)
+      JSON.parse(req.body.data),
       // JSON.parse(req.body.data)
     );
 
@@ -36,7 +36,7 @@ router.post(
 
     next();
   },
-  UserController.createPatient
+  UserController.createPatient,
 );
 router.post(
   "/create-admin",
@@ -44,10 +44,10 @@ router.post(
   fileUploader.upload.single("file"),
   (req: Request, res: Response, next: NextFunction) => {
     req.body = UserValidation.createAdminValidationSchema.parse(
-      JSON.parse(req.body.data)
+      JSON.parse(req.body.data),
     );
     return UserController.createAdmin(req, res, next);
-  }
+  },
 );
 router.post(
   "/create-doctor",
@@ -56,10 +56,10 @@ router.post(
   (req: Request, res: Response, next: NextFunction) => {
     console.log(JSON.parse(req.body.data));
     req.body = UserValidation.createDoctorValidationSchema.parse(
-      JSON.parse(req.body.data)
+      JSON.parse(req.body.data),
     );
     return UserController.createDoctor(req, res, next);
-  }
+  },
 );
 
 export const UserRouter = router;

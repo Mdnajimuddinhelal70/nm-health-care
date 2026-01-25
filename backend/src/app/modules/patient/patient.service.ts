@@ -1,8 +1,4 @@
-import {
-  UserStatus,
-  type Patient,
-  type Prisma,
-} from "generated/prisma/client.js";
+import { UserStatus, type Patient, type Prisma } from "@prisma/index.js";
 import {
   paginationHelper,
   type IOptions,

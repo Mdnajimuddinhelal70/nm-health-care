@@ -1,8 +1,7 @@
 import bcrypt from "bcryptjs";
 import type { Request } from "express";
 
-import type { Prisma } from "generated/prisma/client.js";
-import { UserRole, type Admin } from "prisma/src/generated/prisma/client.js";
+import { UserRole, type Admin, type Prisma } from "@prisma/index.js";
 import { fileUploader } from "../../helper/fileUploader.js";
 import {
   paginationHelper,
@@ -10,7 +9,6 @@ import {
 } from "../../helper/paginationHelper.js";
 import { prisma } from "../../shared/prisma.js";
 import { userSearchableFields } from "./user.constant.js";
-
 const createPatient = async (req: Request) => {
   if (req.file) {
     const uploadResult = await fileUploader.uploadToCloudinary(req.file);

@@ -1,4 +1,4 @@
-import type { Prisma } from "generated/prisma/client.js";
+import type { Prisma } from "@prisma/index.js";
 import httpStatus from "http-status-codes";
 import ApiError from "src/app/errors/ApiError.js";
 import {

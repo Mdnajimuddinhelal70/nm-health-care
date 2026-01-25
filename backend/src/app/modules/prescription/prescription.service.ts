@@ -3,7 +3,7 @@ import {
   PaymentStatus,
   UserRole,
   type Prescription,
-} from "generated/prisma/client.js";
+} from "@prisma/index.js";
 import httpStatus from "http-status-codes";
 
 import ApiError from "src/app/errors/ApiError.js";

@@ -1,6 +1,6 @@
 import express from "express";
 
-import { UserRole } from "generated/prisma/enums.js";
+import { UserRole } from "@prisma/index.js";
 import auth from "src/app/middlewares/auth.js";
 import { ReviewController } from "./review.controller.js";
 

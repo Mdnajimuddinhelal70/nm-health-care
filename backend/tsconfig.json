@@ -3,11 +3,10 @@
     "module": "nodenext",
     "target": "esnext",
 
-    "baseUrl": ".",                      
-    "paths": {                          
-      "@prisma/*": ["src/generated/prisma/*"]
-    },
-
+"baseUrl": ".",
+"paths": {
+  "@prisma/*": ["prisma/generated/prisma/*"]
+},
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,

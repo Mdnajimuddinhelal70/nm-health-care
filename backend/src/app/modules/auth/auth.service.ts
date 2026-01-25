@@ -1,5 +1,5 @@
+import { UserStatus } from "@prisma/index.js";
 import bcrypt from "bcryptjs";
-import { UserStatus } from "generated/prisma/enums.js";
 
 import httpStatus from "http-status-codes";
 import type { Secret } from "jsonwebtoken";

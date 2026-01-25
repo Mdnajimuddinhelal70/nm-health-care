@@ -1,4 +1,4 @@
-import type { Prisma } from "generated/prisma/client.js";
+import type { Prisma } from "@prisma/index.js";
 import httpStatus from "http-status-codes";
 import ApiError from "src/app/errors/ApiError.js";
 import { extractJsonFromMessage } from "src/app/helper/extractJsonFromMessage.js";
@@ -90,7 +90,7 @@ const getAllFromDB = async (filters: any, options: IOptions) => {
 
 const updateIntoDB = async (
   id: string,
-  payload: Partial<IDoctorUpdateInput>
+  payload: Partial<IDoctorUpdateInput>,
 ) => {
   const doctorInfo = await prisma.doctor.findUniqueOrThrow({
     where: {
@@ -103,7 +103,7 @@ const updateIntoDB = async (
   return await prisma.$transaction(async (tnx) => {
     if (specialties && specialties.length > 0) {
       const deleteSpecialtyIds = specialties.filter(
-        (specialty) => specialty.isDeleted
+        (specialty) => specialty.isDeleted,
       );
 
       for (const specialty of deleteSpecialtyIds) {
@@ -116,7 +116,7 @@ const updateIntoDB = async (
       }
 
       const createSpecialtyIds = specialties.filter(
-        (specialty) => !specialty.isDeleted
+        (specialty) => !specialty.isDeleted,
       );
 
       for (const specialty of createSpecialtyIds) {

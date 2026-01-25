@@ -1,5 +1,5 @@
+import type { Specialties } from "@prisma/index.js";
 import type { Request } from "express";
-import type { Specialties } from "generated/prisma/client.js";
 import { fileUploader } from "src/app/helper/fileUploader.js";
 import { prisma } from "src/app/shared/prisma.js";
 
