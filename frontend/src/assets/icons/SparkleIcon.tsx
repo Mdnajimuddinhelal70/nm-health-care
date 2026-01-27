@@ -1,4 +1,4 @@
-import svgPaths from "../../assets/icons/SparkleIcon";
+import svgPaths from "../svg/svg";
 export function SparkleIcon() {
   return (
     <div className="size-[15.994px]">
