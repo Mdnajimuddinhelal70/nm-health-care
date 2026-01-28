@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import {
   CalendarCheck,
   ClipboardList,
@@ -10,6 +9,7 @@ import {
   Video,
 } from "lucide-react";
 import React from "react";
+import { Card, CardContent } from "../../../../components/ui/card";
 
 const steps = [
   {

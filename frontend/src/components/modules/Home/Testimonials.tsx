@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Quote, Star } from "lucide-react";
 import Image from "next/image";
+import { Card, CardContent } from "../../../../components/ui/card";
 import samplePhoto from "../../../assets/images/hero-doctor.jpg";
 
 const testimonials = [

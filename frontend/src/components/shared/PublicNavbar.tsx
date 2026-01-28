@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 
+import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+} from "../../../components/ui/sheet";
 
 const PublicNavbar = () => {
   const navItems = [

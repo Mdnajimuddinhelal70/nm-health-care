@@ -5,8 +5,8 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+} from "../../../components/ui/field";
+import { Input } from "../../../components/ui/input";
 import { Button } from "./button";
 
 const RegisterForm = () => {

@@ -1,13 +1,13 @@
+import { Star } from "lucide-react";
+
+import Image from "next/image";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Star } from "lucide-react";
-
-import Image from "next/image";
+} from "../../../../components/ui/card";
 import cardioDoc from "../../../assets/images/doctor-cardiologist.jpg";
 import neurolDoc from "../../../assets/images/doctor-neurologist.jpg";
 import orthoDoc from "../../../assets/images/doctor-orthopedic.jpg";
