@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { registerPatients } from "@/services/auth/registerPatients";
+import { registerPatient } from "@/services/auth/registerPatients";
 import { useActionState } from "react";
+import { Button } from "../../../components/ui/button";
 import {
   Field,
   FieldDescription,
@@ -9,11 +11,23 @@ import {
   FieldLabel,
 } from "../../../components/ui/field";
 import { Input } from "../../../components/ui/input";
-import { Button } from "./button";
 
 const RegisterForm = () => {
-  const [state, formAction, isPending] = useActionState(registerPatients, null);
-  console.log(state, "State");
+  const [state, formAction, isPending] = useActionState(registerPatient, null);
+  console.log(state, "state");
+
+  const getFieldError = (fieldName: string) => {
+    if (state && state.errors) {
+      const error = state.errors.find((err: any) => err.field === fieldName);
+      if (error) {
+        return error.message;
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  };
   return (
     <form action={formAction}>
       <FieldGroup>
@@ -22,6 +36,11 @@ const RegisterForm = () => {
           <Field>
             <FieldLabel htmlFor="name">Full Name</FieldLabel>
             <Input id="name" name="name" type="text" placeholder="John Doe" />
+            {getFieldError("name") && (
+              <FieldDescription className="text-red-600">
+                {getFieldError("name")}
+              </FieldDescription>
+            )}
           </Field>
           {/* Address */}
           <Field>
@@ -32,6 +51,12 @@ const RegisterForm = () => {
               type="text"
               placeholder="123 Main St"
             />
+
+            {getFieldError("address") && (
+              <FieldDescription className="text-red-600">
+                {getFieldError("address")}
+              </FieldDescription>
+            )}
           </Field>
           {/* Email */}
           <Field>
@@ -42,11 +67,23 @@ const RegisterForm = () => {
               type="email"
               placeholder="m@example.com"
             />
+
+            {getFieldError("email") && (
+              <FieldDescription className="text-red-600">
+                {getFieldError("email")}
+              </FieldDescription>
+            )}
           </Field>
           {/* Password */}
           <Field>
             <FieldLabel htmlFor="password">Password</FieldLabel>
             <Input id="password" name="password" type="password" />
+
+            {getFieldError("password") && (
+              <FieldDescription className="text-red-600">
+                {getFieldError("password")}
+              </FieldDescription>
+            )}
           </Field>
           {/* Confirm Password */}
           <Field className="md:col-span-2">
@@ -56,12 +93,18 @@ const RegisterForm = () => {
               name="confirmPassword"
               type="password"
             />
+
+            {getFieldError("confirmPassword") && (
+              <FieldDescription className="text-red-600">
+                {getFieldError("confirmPassword")}
+              </FieldDescription>
+            )}
           </Field>
         </div>
         <FieldGroup className="mt-4">
           <Field>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Creating Acount..." : "Create Acount"}
+              {isPending ? "Creating Account..." : "Create Account"}
             </Button>
 
             <FieldDescription className="px-6 text-center">
